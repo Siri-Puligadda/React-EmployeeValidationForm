@@ -1,50 +1,33 @@
 # React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- npm i
+- npm run dev
 
-Currently, two official plugins are available:
+## Project Description
+create a React app that helps employees validate and update their existing information through a survey form. The application requirements are detailed below, and the finished application must pass all of the unit tests.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Requirements
+1. The EmployeeValidationForm component collects employee details through four input fields: Name, Email, Employee ID, and Joining Date.
+2. Each input field should have validation logic to ensure that the data entered meets the specified requirements.
+3. A Submit button should be present at the bottom of the form but remain disabled until all fields are valid.
+4. If a field does not meet the criteria, an error message should be displayed below that field.
+5. When the form is valid and submitted, all input fields should be cleared, and the form should be reset to its initial state.
 
-## Expanding the ESLint configuration
+### Validation Criteria
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- Name Field: Must be at least 4 characters long and can only contain alphabetical characters (A-Z, a-z) and spaces.
+- Email Field: Must be in a valid email format (e.g., user@example.com).
+- Employee ID Field: Must be exactly 6 numeric digits.
+- Joining Date Field: Cannot be set to a date in the future.
 
-- Configure the top-level `parserOptions` property like this:
+### Error Messages
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+- Name: "Name must be at least 4 characters long and only contain letters and spaces."
+- Email: "Email must be a valid email address."
+- Employee ID: "Employee ID must be exactly 6 digits."
+- Joining Date: "Joining Date cannot be in the future."
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+### Form Submission Requirements
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+- Form State Reset: Upon successful form submission, all fields should be cleared, and the form should revert to its initial state.
+- Submit Button: Should only be enabled when all input fields are valid.
